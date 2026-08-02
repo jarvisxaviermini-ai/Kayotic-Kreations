@@ -282,6 +282,7 @@ h1 {
 }
 
 #hero-title {
+  color: rgba(238, 247, 251, 0.88);
   font-size: clamp(3.15rem, 8.3vw, 7.9rem);
   min-height: 1.8em;
 }
@@ -316,6 +317,14 @@ h3 {
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.25rem);
   line-height: 1.65;
+}
+
+.hero-copy .eyebrow {
+  color: rgba(134, 217, 255, 0.84);
+}
+
+.hero-copy p:not(.eyebrow) {
+  color: rgba(183, 198, 209, 0.86);
 }
 
 .hero-actions {
