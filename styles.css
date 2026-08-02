@@ -283,7 +283,7 @@ h1 {
 
 #hero-title {
   color: rgba(238, 247, 251, 0.68);
-  -webkit-text-stroke: 0.5pt rgba(255, 255, 255, 0.72);
+  -webkit-text-stroke: 1.5pt rgba(255, 255, 255, 0.72);
   text-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
   font-size: clamp(3.15rem, 8.3vw, 7.9rem);
   min-height: 1.8em;
