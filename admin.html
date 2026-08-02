@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Kayotic Kreations</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <header class="admin-top">
+        <div>
+          <p class="eyebrow">Local CMS</p>
+          <h1>Kayotic Kreations editor</h1>
+        </div>
+        <a class="button" href="/">View site</a>
+      </header>
+
+      <div class="admin-grid">
+        <nav class="admin-tabs" aria-label="Editor sections">
+          <button class="is-active" type="button" data-panel="basics">Basics</button>
+          <button type="button" data-panel="hero">Hero carousel</button>
+          <button type="button" data-panel="gallery">Portfolio</button>
+          <button type="button" data-panel="services">Services</button>
+          <button type="button" data-panel="contact">Contact</button>
+        </nav>
+
+        <form id="editor-form">
+          <section class="editor-panel is-active" id="panel-basics">
+            <h2>Site copy</h2>
+            <label>
+              Hero title
+              <textarea name="heroTitle" rows="3"></textarea>
+            </label>
+            <label>
+              Hero description
+              <textarea name="heroDescription" rows="3"></textarea>
+            </label>
+            <label>
+              Story title
+              <textarea name="storyTitle" rows="2"></textarea>
+            </label>
+            <label>
+              Story body
+              <textarea name="storyBody" rows="5"></textarea>
+            </label>
+            <div class="repeat-card-head">
+              <h2>Stats</h2>
+              <button class="add-button" type="button" data-add="stats">Add stat</button>
+            </div>
+            <div class="repeat-list" id="stats-list"></div>
+          </section>
+
+          <section class="editor-panel" id="panel-hero">
+            <div class="repeat-card-head">
+              <h2>Hero carousel slides</h2>
+              <button class="add-button" type="button" data-add="heroSlides">Add slide</button>
+            </div>
+            <div class="repeat-list" id="heroSlides-list"></div>
+          </section>
+
+          <section class="editor-panel" id="panel-gallery">
+            <div class="repeat-card-head">
+              <h2>Portfolio images</h2>
+              <button class="add-button" type="button" data-add="gallery">Add image</button>
+            </div>
+            <div class="repeat-list" id="gallery-list"></div>
+          </section>
+
+          <section class="editor-panel" id="panel-services">
+            <div class="repeat-card-head">
+              <h2>Services</h2>
+              <button class="add-button" type="button" data-add="services">Add service</button>
+            </div>
+            <div class="repeat-list" id="services-list"></div>
+          </section>
+
+          <section class="editor-panel" id="panel-contact">
+            <h2>Quote and contact</h2>
+            <label>
+              Quote
+              <textarea name="quoteText" rows="3"></textarea>
+            </label>
+            <label>
+              Quote credit
+              <input name="quoteCredit">
+            </label>
+            <label>
+              Contact title
+              <textarea name="contactTitle" rows="2"></textarea>
+            </label>
+            <label>
+              Contact body
+              <textarea name="contactBody" rows="4"></textarea>
+            </label>
+            <div class="field-grid">
+              <label>
+                Contact email
+                <input name="contactEmail" type="email">
+              </label>
+              <label>
+                Footer tagline
+                <input name="footerTagline">
+              </label>
+            </div>
+          </section>
+
+          <div class="save-bar">
+            <span class="save-status" id="save-status">Ready</span>
+            <button type="button" id="reset-button">Reload</button>
+            <button class="primary" type="submit">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

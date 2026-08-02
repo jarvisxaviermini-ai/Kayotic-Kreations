@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kayotic Kreations | Photography</title>
+    <meta name="description" content="Kayotic Kreations is a photography studio with 20+ years of experience in events, weddings, professional portraits, landscapes, and cityscapes.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Kayotic Kreations home">
+        <span class="brand-mark">KK</span>
+        <span>Kayotic Kreations</span>
+      </a>
+      <a class="social-button" href="https://www.instagram.com/kayotickreation/" target="_blank" rel="noopener noreferrer" aria-label="Kayotic Kreations on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle cx="17.5" cy="6.5" r="1.2"></circle>
+        </svg>
+      </a>
+      <a class="instagram-prompt" href="https://www.instagram.com/kayotickreation/" target="_blank" rel="noopener noreferrer" aria-label="Follow Kayotic Kreations on Instagram">
+        <span aria-hidden="true">&larr;</span>
+        <span>follow me on Instagram</span>
+      </a>
+      <nav class="nav-links" aria-label="Main menu">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#story">Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Featured photography carousel">
+        <div class="hero-track" id="hero-track"></div>
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
+          <p class="eyebrow" id="hero-kicker"></p>
+          <h1 id="hero-title"></h1>
+          <p id="hero-description"></p>
+          <div class="hero-actions">
+            <a class="button primary" href="#contact">Book a session</a>
+            <a class="button ghost" href="#work">View portfolio</a>
+          </div>
+        </div>
+        <div class="hero-progress" aria-hidden="true"><span id="hero-progress-bar"></span></div>
+        <a class="scroll-cue" href="#story" aria-label="Scroll to story">
+          <span></span>
+        </a>
+        <div class="hero-controls" aria-label="Carousel controls">
+          <button class="icon-button" id="prev-slide" type="button" aria-label="Previous slide">‹</button>
+          <div class="dots" id="hero-dots" aria-label="Slide selector"></div>
+          <button class="icon-button" id="next-slide" type="button" aria-label="Next slide">›</button>
+        </div>
+      </section>
+
+      <section class="section intro-band" id="story">
+        <div class="section-heading">
+          <p class="eyebrow">Behind the lens</p>
+          <h2 id="story-title"></h2>
+        </div>
+        <div class="story-copy">
+          <p id="story-body"></p>
+          <dl class="stats" id="stats"></dl>
+        </div>
+      </section>
+
+      <section class="section portfolio" id="work">
+        <div class="section-heading">
+          <p class="eyebrow">Portfolio</p>
+          <h2>Five ways to tell a story.</h2>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </section>
+
+      <section class="section services" id="services">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2>Calm direction, sharp timing, finished images with presence.</h2>
+        </div>
+        <div class="service-list" id="service-list"></div>
+      </section>
+
+      <section class="quote-section" aria-label="Client quote">
+        <blockquote id="quote-text"></blockquote>
+        <cite id="quote-credit"></cite>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div>
+          <p class="eyebrow">Start a project</p>
+          <h2 id="contact-title"></h2>
+          <p id="contact-body"></p>
+        </div>
+        <form class="contact-form" id="contact-form" action="mailto:hello@kayotickreations.com" method="post" enctype="text/plain">
+          <label>
+            Name
+            <input name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            Project type
+            <select name="project_type">
+              <option>Wedding</option>
+              <option>Event</option>
+              <option>Professional portrait</option>
+              <option>Landscape or cityscape</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>
+            Details
+            <textarea name="details" rows="5" required></textarea>
+          </label>
+          <button class="button primary" type="submit">Send inquiry</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Kayotic Kreations</span>
+      <span id="footer-tagline">Events, weddings, portraits, landscapes, and cityscapes.</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
