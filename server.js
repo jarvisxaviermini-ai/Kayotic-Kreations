@@ -5,6 +5,7 @@ const crypto = require("crypto");
 
 const root = __dirname;
 const contentPath = path.join(root, "content.json");
+const contentDataPath = path.join(root, "content-data.js");
 const passwordPath = path.join(root, ".admin-password");
 const port = Number(process.env.PORT || 3000);
 const host = process.env.HOST || "127.0.0.1";
@@ -99,6 +100,13 @@ function isBlockedStatic(filePath) {
   return name.startsWith(".") || ["content.json", "server.js", "package.json", "server.log"].includes(name);
 }
 
+async function writeContentFiles(content) {
+  const formatted = `${JSON.stringify(content, null, 2)}\n`;
+  const fallback = `window.KK_SITE_CONTENT = ${JSON.stringify(content, null, 2)};\n`;
+  await fs.promises.writeFile(contentPath, formatted, "utf8");
+  await fs.promises.writeFile(contentDataPath, fallback, "utf8");
+}
+
 async function handleApi(req, res) {
   if (req.url === "/api/login" && req.method === "POST") {
     const body = await readBody(req);
@@ -141,8 +149,7 @@ async function handleApi(req, res) {
 
     const body = await readBody(req);
     const parsed = JSON.parse(body);
-    const formatted = `${JSON.stringify(parsed, null, 2)}\n`;
-    await fs.promises.writeFile(contentPath, formatted, "utf8");
+    await writeContentFiles(parsed);
     send(res, 200, JSON.stringify({ ok: true }), "application/json; charset=utf-8");
     return true;
   }

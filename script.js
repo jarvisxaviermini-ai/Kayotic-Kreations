@@ -8,11 +8,15 @@ const carouselDelay = 6500;
 const qs = (selector) => document.querySelector(selector);
 
 async function loadContent() {
-  const response = await fetch("/api/content");
-  if (!response.ok) {
-    throw new Error("Could not load site content");
+  try {
+    const response = await fetch("/api/content");
+    if (response.ok) return response.json();
+  } catch {
+    // Static file mode does not have the Node API.
   }
-  return response.json();
+
+  if (window.KK_SITE_CONTENT) return window.KK_SITE_CONTENT;
+  throw new Error("Could not load site content");
 }
 
 function setText(selector, value) {
