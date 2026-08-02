@@ -852,7 +852,7 @@ h3 {
 }
 
 .editor-panel label,
-.repeat-card label {
+.repeat-field {
   display: grid;
   gap: 7px;
   color: #5c6268;
@@ -899,6 +899,46 @@ h3 {
   justify-content: space-between;
   gap: 12px;
   align-items: center;
+}
+
+.upload-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.image-upload-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.upload-button {
+  width: fit-content;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 1px solid #1e2429;
+  border-radius: 8px;
+  color: #1e2429;
+  background: #fff;
+  font-size: 0.82rem;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.image-preview {
+  width: min(100%, 260px);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid #d7d1c8;
+  border-radius: 8px;
 }
 
 .remove-button {

@@ -31,6 +31,27 @@ function fillSimpleFields() {
   });
 }
 
+function renderField(key, item, index, field) {
+  const value = item[field] || "";
+
+  if (field === "description" || field === "alt") {
+    return `<textarea data-repeat="${key}" data-index="${index}" data-field="${field}" rows="3">${value}</textarea>`;
+  }
+
+  if (key === "heroSlides" && field === "image") {
+    return `
+      <input data-repeat="${key}" data-index="${index}" data-field="${field}" value="${value}" placeholder="Paste an image URL or upload a file">
+      <div class="upload-row">
+        <input class="image-upload-input" id="hero-upload-${index}" type="file" accept="image/jpeg,image/png,image/webp,image/gif" data-upload="${key}" data-index="${index}" data-field="${field}">
+        <label class="upload-button" for="hero-upload-${index}">Upload hero photo</label>
+      </div>
+      ${value ? `<img class="image-preview" src="${value}" alt="">` : ""}
+    `;
+  }
+
+  return `<input data-repeat="${key}" data-index="${index}" data-field="${field}" value="${value}">`;
+}
+
 function renderRepeatList(key) {
   const list = $(`#${key}-list`);
   if (!list) return;
@@ -44,10 +65,10 @@ function renderRepeatList(key) {
         </div>
         <div class="field-grid">
           ${repeatFields[key].map((field) => `
-            <label>
-              ${field}
-              ${field === "description" || field === "alt" ? `<textarea data-repeat="${key}" data-index="${index}" data-field="${field}" rows="3">${item[field] || ""}</textarea>` : `<input data-repeat="${key}" data-index="${index}" data-field="${field}" value="${item[field] || ""}">`}
-            </label>
+            <div class="repeat-field">
+              <span>${field}</span>
+              ${renderField(key, item, index, field)}
+            </div>
           `).join("")}
         </div>
       </article>
@@ -105,6 +126,37 @@ async function saveContent(event) {
   setStatus("Saved");
 }
 
+async function uploadImage(field) {
+  const file = field.files?.[0];
+  if (!file) return;
+
+  setStatus("Uploading image...");
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch("/api/upload", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      window.location.href = "/login.html";
+      return;
+    }
+    setStatus("Upload failed");
+    return;
+  }
+
+  const result = await response.json();
+  const key = field.dataset.upload;
+  const index = Number(field.dataset.index);
+  const prop = field.dataset.field;
+  content[key][index][prop] = result.url;
+  renderRepeatList(key);
+  setStatus("Image uploaded. Save changes to publish it.");
+}
+
 function addItem(key) {
   const defaults = {
     stats: { value: "New", label: "Statistic" },
@@ -141,7 +193,11 @@ function wireEvents() {
   $("#reset-button").addEventListener("click", fetchContent);
 
   document.addEventListener("input", (event) => {
-    if (event.target.matches("input, textarea")) setStatus("Unsaved changes");
+    if (event.target.matches("input:not([type='file']), textarea")) setStatus("Unsaved changes");
+  });
+
+  document.addEventListener("change", (event) => {
+    if (event.target.matches("[data-upload]")) uploadImage(event.target);
   });
 
   document.addEventListener("click", (event) => {
