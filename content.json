@@ -4,19 +4,23 @@
   "heroSlides": [
     {
       "label": "",
-      "image": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=86"
+      "image": "/uploads/1785638768610-1g3b7743.jpg"
     },
     {
       "label": "",
-      "image": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=2200&q=86"
+      "image": "/uploads/1785638896813-1g3b7123.jpg"
     },
     {
       "label": "",
-      "image": "https://images.unsplash.com/photo-1492447166138-50c3889fccb1?auto=format&fit=crop&w=2200&q=86"
+      "image": "/uploads/1785638902956-1g3b2505-edited.jpg"
     },
     {
       "label": "",
-      "image": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2200&q=86"
+      "image": "/uploads/1785639047651-1g3b9727.jpg"
+    },
+    {
+      "label": "New slide",
+      "image": "/uploads/1785639190553-dsc02564.jpg"
     }
   ],
   "storyTitle": "Twenty years of watching for the frame nobody else sees.",

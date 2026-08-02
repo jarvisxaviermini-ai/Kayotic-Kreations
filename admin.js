@@ -38,12 +38,15 @@ function renderField(key, item, index, field) {
     return `<textarea data-repeat="${key}" data-index="${index}" data-field="${field}" rows="3">${value}</textarea>`;
   }
 
-  if (key === "heroSlides" && field === "image") {
+  if (["heroSlides", "gallery"].includes(key) && field === "image") {
+    const uploadId = `${key}-upload-${index}`;
+    const uploadLabel = key === "heroSlides" ? "Upload hero photo" : "Upload portfolio photo";
+
     return `
       <input data-repeat="${key}" data-index="${index}" data-field="${field}" value="${value}" placeholder="Paste an image URL or upload a file">
       <div class="upload-row">
-        <input class="image-upload-input" id="hero-upload-${index}" type="file" accept="image/jpeg,image/png,image/webp,image/gif" data-upload="${key}" data-index="${index}" data-field="${field}">
-        <label class="upload-button" for="hero-upload-${index}">Upload hero photo</label>
+        <input class="image-upload-input" id="${uploadId}" type="file" accept="image/jpeg,image/png,image/webp,image/gif" data-upload="${key}" data-index="${index}" data-field="${field}">
+        <label class="upload-button" for="${uploadId}">${uploadLabel}</label>
       </div>
       ${value ? `<img class="image-preview" src="${value}" alt="">` : ""}
     `;
