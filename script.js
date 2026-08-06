@@ -184,6 +184,33 @@ function renderQuoteAndContact() {
   }
 }
 
+function wireContactForm() {
+  const form = qs("#contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const name = formData.get("name") || "";
+    const email = formData.get("email") || "";
+    const projectType = formData.get("project_type") || "";
+    const details = formData.get("details") || "";
+    const recipient = siteContent.contactEmail || "info@kayotickreations.com";
+    const subject = "Kayotic Kreations inquiry";
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Project type: ${projectType}`,
+      "",
+      "Details:",
+      details,
+    ].join("\n");
+
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}
+
 function wireControls() {
   qs("#prev-slide")?.addEventListener("click", () => goToSlide(activeSlide - 1));
   qs("#next-slide")?.addEventListener("click", () => goToSlide(activeSlide + 1));
@@ -328,6 +355,7 @@ async function boot() {
     renderGallery();
     renderServices();
     renderQuoteAndContact();
+    wireContactForm();
     wireControls();
     wireHeaderDepth();
     wireHeroTitleResize();
