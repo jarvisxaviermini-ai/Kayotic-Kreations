@@ -102,7 +102,7 @@ window.KK_SITE_CONTENT = {
   "quoteCredit": "Kayotic Kreations",
   "contactTitle": "Tell me what you are planning.",
   "contactBody": "Share the date, location, style, and what matters most. I will help shape the coverage around the moments you cannot afford to miss.",
-  "contactEmail": "hello@kayotickreations.com",
+  "contactEmail": "info@kayotickreations.com",
   "footerTagline": "Events, weddings, portraits, landscapes, and cityscapes.",
   "viewport": ""
 };
